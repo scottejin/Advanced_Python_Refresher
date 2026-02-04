@@ -1,14 +1,5 @@
 #Make Grid
-grid = [
-    ["" for _ in range(15)],
-    ["" for _ in range(15)],
-    ["" for _ in range(15)],
-    ["" for _ in range(15)],
-    ["" for _ in range(15)],
-    ["" for _ in range(15)],
-    ["" for _ in range(15)],
-    ["" for _ in range(15)],
-]
+grid = [["" for _ in range(15)] for _ in range(8)]
 def setup_grid():
     for i in range(8):
         for j in range(15):
@@ -19,5 +10,5 @@ setup_grid()
 for row in grid:
     print(row)
 
-
+#Making the algorithm
 
