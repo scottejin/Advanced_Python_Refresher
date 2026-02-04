@@ -16,5 +16,6 @@ def setup_grid():
 setup_grid()
 for row in grid:
     print(row)
-# Output the grid
+
+
 
