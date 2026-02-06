@@ -1,4 +1,6 @@
 #Make Grid
+from cmath import inf
+
 grid = [["" for _ in range(25)] for _ in range(15)]
 def setup_grid():
     for i in range(15):
@@ -10,10 +12,10 @@ setup_grid()
 for row in grid:
     print(row)
 
-## For Mrs.F, attached is the website link for the following souurce... Bro, there is no way im coding this without guidance,
-## Why is a* so hard ....
+# For Mrs.F, attached is the website link for the following souurce... Bro, there is no way im coding this without guidance,
+# Why is a* so hard ....
 
-## https://medium.com/@nicholas.w.swift/easy-a-star-pathfinding-7e6689c7f7b2 -> Website used for advice
+# https://medium.com/@nicholas.w.swift/easy-a-star-pathfinding-7e6689c7f7b2 -> Website used for advice
 
 # A* pathfinding notes (simple, step-by-step):
 
@@ -28,12 +30,16 @@ closed_list = []
 #    - Set f = g + h
 #    - Set parent = None (start has no parent)
 #    - Add this single node to open_list
+position = 0
 
-for node in range(0,15):
-    actual_cost = 0
-    heuristic_cost = 0
-    estimated_cost = actual_cost + heuristic_cost
-
+starting_node = {
+    "position": (0,0),   # Starting pos ig?
+    'actual_cost': 0,  # Cost so far
+    'heuristic_cost': abs(0-14) + abs(0-24), # Goal distance as a absolute value
+    'total_cost': abs(0-14) + abs(0-24), # How much distance still needed
+    'parent': None # Which node told me to 'get to' this??
+}
+open_list.append(starting_node) # Did not know you could append a dictionary to a list.
 
 
 
