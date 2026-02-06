@@ -1,6 +1,4 @@
 #Make Grid
-from cmath import inf
-
 grid = [["" for _ in range(25)] for _ in range(15)]
 def setup_grid():
     for i in range(15):
@@ -33,7 +31,7 @@ closed_list = []
 position = 0
 
 starting_node = {
-    "position": (0,0),   # Starting pos ig?
+    'position': (0,0),   # Starting pos ig?
     'actual_cost': 0,  # Cost so far
     'heuristic_cost': abs(0-14) + abs(0-24), # Goal distance as a absolute value
     'total_cost': abs(0-14) + abs(0-24), # How much distance still needed
@@ -42,10 +40,19 @@ starting_node = {
 open_list.append(starting_node) # Did not know you could append a dictionary to a list.
 
 
+while open_list != []:# While there are still nodes to look at run steps below:
 
+    current_lowest = float('inf') # Set this to -inf and was confused for so long
+    cheapest_index = None
 
-
-# 3) While open_list is not empty, repeat these steps:
+    for current_list in range(0,len(open_list)):
+        index_current = open_list[current_list]
+        calling_dictionary = index_current['total_cost']
+        if calling_dictionary < current_lowest:
+            current_lowest = calling_dictionary
+            cheapest_index = index_current['position']
+        else:
+            continue
 
 
 
