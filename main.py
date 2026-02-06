@@ -10,7 +10,6 @@ setup_grid()
 for row in grid:
     print(row)
 
-#Making the algorithm
 ## For Mrs.F, attached is the website link for the following souurce... Bro, there is no way im coding this without guidance,
 ## Why is a* so hard ....
 
@@ -19,9 +18,24 @@ for row in grid:
 # A* pathfinding notes (simple, step-by-step):
 
 # 1) Make two lists: open_list (nodes to check) and closed_list (nodes already checked).
+open_list = []
+closed_list = []
+
+# 2) Put the start node into open_list with initial costs:
+#    - Create a node for the start position (0, 0)
+#    - Set g = 0 (no cost yet, we're at the start)
+#    - Calculate h = Manhattan distance from start to goal
+#    - Set f = g + h
+#    - Set parent = None (start has no parent)
+#    - Add this single node to open_list
+
+for node in range(0,15):
+    actual_cost = 0
+    heuristic_cost = 0
+    estimated_cost = actual_cost + heuristic_cost
 
 
-# 2) Put the start node into open_list. Keep its f at 0 for now.
+
 
 
 
