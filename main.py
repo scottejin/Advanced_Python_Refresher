@@ -43,20 +43,20 @@ open_list.append(starting_node) # Did not know you could append a dictionary to 
 while open_list != []:# While there are still nodes to look at run steps below:
 
     current_lowest = float('inf') # Set this to -inf and was confused for so long
-    cheapest_index = None
+    current = None
 
     for current_list in range(0,len(open_list)):
         index_current = open_list[current_list]
         calling_dictionary = index_current['total_cost']
         if calling_dictionary < current_lowest:
             current_lowest = calling_dictionary
-            cheapest_index = index_current['position']
+            current = index_current
+            #MORE CODE HERE
         else:
             continue
 
 
-
-# 4)   Pick the node in open_list with the lowest f. Call it current.
+# 4)   Pick the node in open_list with the lowest f. Call it current. DONE
 
 
 
