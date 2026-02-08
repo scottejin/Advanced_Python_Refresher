@@ -58,17 +58,13 @@ while open_list != []:# While there are still nodes to look at run steps below:
     closed_list.append(current) #Adding current to checked nodes
 
 # 6)   If current is the goal, stop and backtrack using parents to build the path.
-    parent_path = None
+    backcall_path = 0
     path = []
 
-    if current['total_cost'] == 0:
-        parent_path = current['parent']
-        if current['parent'] == None:
-            break
-        else:
-            path.append(parent_path)
-
-
+    if current['position'] == (14,24):
+        backcall_path = current['parent'] while current['parent'] != None:
+            path.append[backcall_path]
+            path.reverse()
 
 
 
