@@ -45,11 +45,11 @@ while open_list != []:# While there are still nodes to look at run steps below:
     current_lowest = float('inf') # Set this to -inf and was confused for so long
     current = None
 
-    for current_list in range(0,len(open_list)):
-        index_current = open_list[current_list]
-        calling_dictionary = index_current['total_cost']
-        if calling_dictionary < current_lowest:
-            current_lowest = calling_dictionary
+    for current_list in range(0,len(open_list)): #loop...
+        index_current = open_list[current_list] #Calling the list to retrieve the dict
+        calling_dictionary = index_current['total_cost'] #Calling the index key with 'total cost'
+        if calling_dictionary < current_lowest: #If checked cost is higher that the one already stored
+            current_lowest = calling_dictionary #Setting current_lowest to the value stored
             current = index_current #Setting current to the cheapest path
         else:
             continue
@@ -61,12 +61,11 @@ while open_list != []:# While there are still nodes to look at run steps below:
     backcall_path = 0
     path = []
 
-    if current['position'] == (14,24):
-        backcall_path = current['parent'] while current['parent'] != None:
-            path.append[backcall_path]
-            path.reverse()
-
-
+    if current['position'] == (14,24): #When current reaches the end
+        while current is not None: # Checking if the parent position is existent or not after running the loop
+            path.append(current['position']) #Appends the current loops position to path
+            current = current['parent'] # Resetting path
+        break
 
 
 
