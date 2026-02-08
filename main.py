@@ -18,16 +18,10 @@ for row in grid:
 # A* pathfinding notes (simple, step-by-step):
 
 # 1) Make two lists: open_list (nodes to check) and closed_list (nodes already checked).
+
 open_list = []
 closed_list = []
 
-# 2) Put the start node into open_list with initial costs:
-#    - Create a node for the start position (0, 0)
-#    - Set g = 0 (no cost yet, we're at the start)
-#    - Calculate h = Manhattan distance from start to goal
-#    - Set f = g + h
-#    - Set parent = None (start has no parent)
-#    - Add this single node to open_list
 position = 0
 
 starting_node = {
@@ -58,18 +52,19 @@ while open_list != []:# While there are still nodes to look at run steps below:
     closed_list.append(current) #Adding current to checked nodes
 
 # 6)   If current is the goal, stop and backtrack using parents to build the path.
-    backcall_path = 0
     path = []
 
     if current['position'] == (14,24): #When current reaches the end
         while current is not None: # Checking if the parent position is existent or not after running the loop
             path.append(current['position']) #Appends the current loops position to path
             current = current['parent'] # Resetting path
+        path.reverse()
         break
 
 
-
 # 7)   Find all neighbors of current (up, down, left, right, etc.). Call them children.
+
+
 
 
 
