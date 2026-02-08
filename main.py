@@ -63,6 +63,26 @@ while open_list != []:# While there are still nodes to look at run steps below:
 
 
 # 7)   Find all neighbors of current (up, down, left, right, etc.). Call them children.
+    current_row, current_col =current['position']
+    neighbours =[]
+
+    # You can move Up/down/left/right
+    current_row -1 = checked_row
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
