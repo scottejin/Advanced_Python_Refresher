@@ -51,18 +51,11 @@ while open_list != []:# While there are still nodes to look at run steps below:
         if calling_dictionary < current_lowest:
             current_lowest = calling_dictionary
             current = index_current
-            #MORE CODE HERE
         else:
             continue
 
-
-# 4)   Pick the node in open_list with the lowest f. Call it current. DONE
-
-
-
-# 5)   Move current from open_list to closed_list.
-
-
+    open_list.remove(current)
+    closed_list.append(current)
 
 # 6)   If current is the goal, stop and backtrack using parents to build the path.
 
