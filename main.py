@@ -62,15 +62,15 @@ while open_list != []:# While there are still nodes to look at run steps below:
 
 
 # 7)   Find all neighbors of current (up, down, left, right, etc.). Call them children.
-    current_row, current_col =current['position']
+    current_row, current_col = current['position']
     neighbours =[]
 
 
     # You can move Up/down/left/right
     directions = [(-1,0),(1,0),(0,-1),(0,1)]
     for movable_directions in directions:
-        new_row = current_row + directions[0]
-        new_col = current_col + directions[1]
+        new_row = current_row + movable_directions
+        new_col = current_col + movable_directions
 
         if 0 <= new_row < 15 and 0 <= new_col <25:
             if grid[new_row][new_col] in['.','E']:
@@ -79,7 +79,6 @@ while open_list != []:# While there are still nodes to look at run steps below:
 
                 if not already_checked:
                     neighbours.append(neighbour_position)
-
 
 
 
