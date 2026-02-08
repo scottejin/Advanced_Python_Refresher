@@ -11,7 +11,6 @@ for row in grid:
     print(row)
 
 # For Mrs.F, attached is the website link for the following souurce...
-# Why is a* so hard ....
 
 # https://medium.com/@nicholas.w.swift/easy-a-star-pathfinding-7e6689c7f7b2 -> Website used for advice
 
@@ -65,8 +64,7 @@ while open_list != []:# While there are still nodes to look at run steps below:
 # 7)   Find all neighbors of current (up, down, left, right, etc.). Call them children.
     current_row, current_col =current['position']
     neighbours =[]
-    new_row = 0
-    new_col = 0
+
 
     # You can move Up/down/left/right
     directions = [(-1,0),(1,0),(0,-1),(0,1)]
@@ -75,25 +73,12 @@ while open_list != []:# While there are still nodes to look at run steps below:
         new_col = current_col + directions[1]
 
         if 0 <= new_row < 15 and 0 <= new_col <25:
-           if grid[new_row][new_col] in['.','E']:
-               neighbour_position = (new_row, new_col)
+            if grid[new_row][new_col] in['.','E']:
+                neighbour_position = (new_row, new_col)
+                already_checked = any(node['position'] == neighbour_position for node in closed_list)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                if not already_checked:
+                    neighbours.append(neighbour_position)
 
 
 
