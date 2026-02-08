@@ -10,7 +10,7 @@ setup_grid()
 for row in grid:
     print(row)
 
-# For Mrs.F, attached is the website link for the following souurce... Bro, there is no way im coding this without guidance,
+# For Mrs.F, attached is the website link for the following souurce...
 # Why is a* so hard ....
 
 # https://medium.com/@nicholas.w.swift/easy-a-star-pathfinding-7e6689c7f7b2 -> Website used for advice
@@ -50,14 +50,27 @@ while open_list != []:# While there are still nodes to look at run steps below:
         calling_dictionary = index_current['total_cost']
         if calling_dictionary < current_lowest:
             current_lowest = calling_dictionary
-            current = index_current
+            current = index_current #Setting current to the cheapest path
         else:
             continue
 
-    open_list.remove(current)
-    closed_list.append(current)
+    open_list.remove(current) #Removing current from unchecked nodes
+    closed_list.append(current) #Adding current to checked nodes
 
 # 6)   If current is the goal, stop and backtrack using parents to build the path.
+    parent_path = None
+    path = []
+
+    if current['total_cost'] == 0:
+        parent_path = current['parent']
+        if current['parent'] == None:
+            break
+        else:
+            path.append(parent_path)
+
+
+
+
 
 
 
