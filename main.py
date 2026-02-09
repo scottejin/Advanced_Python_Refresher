@@ -82,15 +82,19 @@ while open_list != []:# While there are still nodes to look at run steps below:
 
 
     for neighbour in neighbours:
-        actual_cost = current['actual_cost'] + 1
-        heuristic_cost = abs(neighbour[0] - 14) + abs(neighbour[1] - 24)
-        total_cost = actual_cost + heuristic_cost
+        actual_cost = current['actual_cost'] + 1 #Cost of moving one grid square
+        heuristic_cost = abs(neighbour[0] - 14) + abs(neighbour[1] - 24) #Absolute -> cost to end
+        total_cost = actual_cost + heuristic_cost #Adding together == Cost predicted at end
 
-        found = None
+        found = None # No match found yet
         for path in open_list:
-            if path['position'] == neighbour:
-                found= path
+            if path['position'] == neighbour: #if calling dict with kky == value of neighbour
+                found = path #Set found to the value of the dict in open_list
                 break
+    #Extract
+    #Save values to Such
+    #restore as dict
+    # 'value' = value
 
 
 
