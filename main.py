@@ -32,6 +32,7 @@ starting_node = {
 }
 open_list.append(starting_node) # Did not know you could append a dictionary to a list.
 
+found_path = None  # Store the final path once found
 
 while open_list != []:# While there are still nodes to look at run steps below:
 
@@ -58,6 +59,7 @@ while open_list != []:# While there are still nodes to look at run steps below:
             path.append(current['position']) #Appends the current loops position to path
             current = current['parent'] # Resetting path
         path.reverse()
+        found_path = path
         break
 
 
@@ -91,18 +93,25 @@ while open_list != []:# While there are still nodes to look at run steps below:
             if path['position'] == neighbour: #if calling dict with kky == value of neighbour
                 found = path #Set found to the value of the dict in open_list
                 break
-    #Extract
-    #Save values to Such
-    #restore as dict
-    # 'value' = value
 
+        if found is not None:  # If we find a path already in list
+            if actual_cost < found['actual_cost']: # Is cheaper or not?
+                found['actual_cost'] = actual_cost
+                found['heuristic_cost'] = heuristic_cost
+                found['total_cost'] = total_cost
+                found['parent'] = current
+            continue
 
+        open_list.append({ #Appending to the list the value of the final dict
+            'position': neighbour,
+            'actual_cost': actual_cost,
+            'heuristic_cost': heuristic_cost,
+            'total_cost': total_cost,
+            'parent': current
+        })
 
-# 8)   For each child:
-# 9)     If child is already in closed_list, skip it and go to the next child.
-# 10)    Compute costs:
-# 11)      g = cost from start to child (current.g + step cost).
-# 12)      h = estimated distance from child to goal.
-# 13)      f = g + h.
-# 14)    If child is already in open_list with a lower g, skip this child.
-# 15)    Otherwise, set child's parent to current and add child to open_list.
+if found_path is not None:
+    print(found_path)
+    print("Path length:", len(found_path))
+else:
+    print("No path found.")
