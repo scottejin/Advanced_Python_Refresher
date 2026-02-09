@@ -80,13 +80,18 @@ while open_list != []:# While there are still nodes to look at run steps below:
                 if not already_checked:
                     neighbours.append(neighbour_position)
 
-    for neighbour in neighbours:
-        total_cost = actual_cost + heuristic_cost
-        heuristic_cost = abs(neighbour[0]-14) + abs(neighbour[1] - 24)
-        actual_cost = abs(neighbour[0]) + abs(neighbour[1])
 
-        if neighbour in closed_list:
-            continue
+    for neighbour in neighbours:
+        actual_cost = current['actual_cost'] + 1
+        heuristic_cost = abs(neighbour[0] - 14) + abs(neighbour[1] - 24)
+        total_cost = actual_cost + heuristic_cost
+
+        found = None
+        for path in open_list:
+            if path['position'] == neighbour:
+                found= path
+                break
+
 
 
 # 8)   For each child:
