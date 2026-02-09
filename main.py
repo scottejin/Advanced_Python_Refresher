@@ -69,8 +69,8 @@ while open_list != []:# While there are still nodes to look at run steps below:
     # You can move Up/down/left/right
     directions = [(-1,0),(1,0),(0,-1),(0,1)]
     for movable_directions in directions:
-        new_row = current_row + movable_directions
-        new_col = current_col + movable_directions
+        new_row = current_row + movable_directions[0]
+        new_col = current_col + movable_directions[1]
 
         if 0 <= new_row < 15 and 0 <= new_col <25:
             if grid[new_row][new_col] in['.','E']:
