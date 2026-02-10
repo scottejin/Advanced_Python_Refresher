@@ -12,12 +12,7 @@ Attached is the website link for the primary source I learnt how to write a* in
 https://medium.com/@nicholas.w.swift/easy-a-star-pathfinding-7e6689c7f7b2 -> Website used for advice
 
 Time to code listed below
-<img width="2308" height="1355" alt="Screenshot 2026-02-10 at 6 14 02 pm" src="https://github.com/user-attachments/assets/04ec11b3-9673-46d8-bd0c-43179326ffe6" />
-
-
-
-
-
+<img width="2309" height="1343" alt="Screenshot 2026-02-10 at 7 01 58 pm" src="https://github.com/user-attachments/assets/d1ba394e-e683-41ec-b69b-8a40e26b02cc" />
 
 
 
