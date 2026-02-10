@@ -111,6 +111,7 @@ if user_seed.strip().isdigit(): #Needed some ASSISTANCE to do this, i had no ide
     rnd.seed(int(user_seed))
 
 obstacles = 0
+final_path = None
 while obstacles < 175:
     empty_cells = [
         (i, j)
@@ -123,16 +124,32 @@ while obstacles < 175:
 
     r, c = rnd.choice(empty_cells)
     grid[r][c] = "#"
+
+    final_path = run_a_star(grid)
+    if final_path is None:
+        setup_grid()
+        obstacles = 0
+        continue
+
     obstacles += 1
 
 for row in grid:
     print(row)
+
+final_path = run_a_star(grid)
+if final_path is None:
+    print("No path found.")
+else:
+    print("Path:", final_path)
 
 # For Mrs.F, attached is the website link for the following souurce...
 
 # https://medium.com/@nicholas.w.swift/easy-a-star-pathfinding-7e6689c7f7b2 -> Website used for advice
 
 # A* pathfinding notes (simple, step-by-step):
+
+
+#BELOW IS MY ORIGIONAL CODE BEFORE USING FUNCTIONS
 
 # 1) Make two lists: open_list (nodes to check) and closed_list (nodes already checked).
 #
