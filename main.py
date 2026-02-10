@@ -1,12 +1,18 @@
 import random as rnd
+
+# Grid dimensions
+ROWS = 30
+COLS = 35
+
 #Make Grid
-grid = [["" for _ in range(25)] for _ in range(15)]
+grid = [["" for _ in range(COLS)] for _ in range(ROWS)]
+
 def setup_grid():
-    for i in range(15):
-        for j in range(25):
+    for i in range(ROWS):
+        for j in range(COLS):
             grid[i][j] = "."
     grid[0][0] = "S"  # Start
-    grid[14][24] = "E"  # End
+    grid[ROWS - 1][COLS - 1] = "E"  # End
 setup_grid()
 
 def run_a_star(grid):
@@ -17,8 +23,8 @@ def run_a_star(grid):
     starting_node = {
         'position': (0,0),   # Starting pos ig?
         'actual_cost': 0,  # Cost so far
-        'heuristic_cost': abs(0-14) + abs(0-24), # Goal distance as a absolute value
-        'total_cost': abs(0-14) + abs(0-24), # How much distance still needed
+        'heuristic_cost': abs(0-(ROWS - 1)) + abs(0-(COLS - 1)), # Goal distance as a absolute value
+        'total_cost': abs(0-(ROWS - 1)) + abs(0-(COLS - 1)), # How much distance still needed
         'parent': None # Which node told me to 'get to' this??
     }
 
@@ -46,7 +52,7 @@ def run_a_star(grid):
     # 6)   If current is the goal, stop and backtrack using parents to build the path.
         path = []
 
-        if current['position'] == (14,24): #When current reaches the end
+        if current['position'] == (ROWS - 1, COLS - 1): #When current reaches the end
             while current is not None: # Checking if the parent position is existent or not after running the loop
                 path.append(current['position']) #Appends the current loops position to path
                 current = current['parent'] # Resetting path
@@ -66,7 +72,7 @@ def run_a_star(grid):
             new_row = current_row + movable_directions[0]
             new_col = current_col + movable_directions[1]
 
-            if 0 <= new_row < 15 and 0 <= new_col <25:
+            if 0 <= new_row < ROWS and 0 <= new_col < COLS:
                 if grid[new_row][new_col] in['.','E']:
                     neighbour_position = (new_row, new_col)
                     already_checked = any(node['position'] == neighbour_position for node in closed_list)
@@ -77,7 +83,7 @@ def run_a_star(grid):
 
         for neighbour in neighbours:
             actual_cost = current['actual_cost'] + 1 #Cost of moving one grid square
-            heuristic_cost = abs(neighbour[0] - 14) + abs(neighbour[1] - 24) #Absolute -> cost to end
+            heuristic_cost = abs(neighbour[0] - (ROWS - 1)) + abs(neighbour[1] - (COLS - 1)) #Absolute -> cost to end
             total_cost = actual_cost + heuristic_cost #Adding together == Cost predicted at end
 
             found = None # No match found yet
@@ -112,18 +118,20 @@ if user_seed.strip().isdigit(): #Needed some ASSISTANCE to do this, i had no ide
 
 obstacles = 0
 final_path = None
-while obstacles < 175:
+# Limit obstacles to half the grid plus one full row.
+max_obstacles = (ROWS * COLS) // 2 + ROWS
+while obstacles < max_obstacles:
     empty_cells = [
         (i, j)
-        for i in range(15)
-        for j in range(25)
+        for i in range(ROWS)
+        for j in range(COLS)
         if grid[i][j] == "."
     ]
     if not empty_cells:
         break
 
     r, c = rnd.choice(empty_cells)
-    grid[r][c] = "#"
+    grid[r][c] = "x"
 
     final_path = run_a_star(grid)
     if final_path is None:
@@ -138,7 +146,7 @@ if final_path is None:
 else:
     for r, c in final_path:
         if grid[r][c] == ".":
-            grid[r][c] = "*"
+            grid[r][c] = "@"
     for row in grid:
         print(row)
 
