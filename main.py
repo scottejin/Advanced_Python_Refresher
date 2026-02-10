@@ -1,3 +1,4 @@
+import random as rnd
 #Make Grid
 grid = [["" for _ in range(25)] for _ in range(15)]
 def setup_grid():
@@ -7,9 +8,34 @@ def setup_grid():
     grid[0][0] = "S"  # Start
     grid[14][24] = "E"  # End
 setup_grid()
+
+user_seed = input('What seed do you want to enter? ')
+if user_seed.strip().isdigit():
+    rnd.seed(int(user_seed))
+
+obstacles = 0
+while obstacles < 175:
+    empty_cells = [
+        (i, j)
+        for i in range(15)
+        for j in range(25)
+        if grid[i][j] == "."
+    ]
+    if not empty_cells:
+        break
+
+    r, c = rnd.choice(empty_cells)
+    grid[r][c] = "#"
+    obstacles += 1
+
+
+
+
+
+
+
 for row in grid:
     print(row)
-
 
 # For Mrs.F, attached is the website link for the following souurce...
 
@@ -111,4 +137,6 @@ while open_list != []:# While there are still nodes to look at run steps below:
             'total_cost': total_cost,
             'parent': current
         })
+
+
 
