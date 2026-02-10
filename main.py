@@ -127,20 +127,20 @@ while obstacles < 175:
 
     final_path = run_a_star(grid)
     if final_path is None:
-        setup_grid()
-        obstacles = 0
+        grid[r][c] = "."  # Remove the obstacle that blocked the path
         continue
 
     obstacles += 1
-
-for row in grid:
-    print(row)
 
 final_path = run_a_star(grid)
 if final_path is None:
     print("No path found.")
 else:
-    print("Path:", final_path)
+    for r, c in final_path:
+        if grid[r][c] == ".":
+            grid[r][c] = "*"
+    for row in grid:
+        print(row)
 
 # For Mrs.F, attached is the website link for the following souurce...
 
