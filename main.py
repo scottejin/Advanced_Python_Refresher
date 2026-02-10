@@ -10,6 +10,7 @@ setup_grid()
 for row in grid:
     print(row)
 
+
 # For Mrs.F, attached is the website link for the following souurce...
 
 # https://medium.com/@nicholas.w.swift/easy-a-star-pathfinding-7e6689c7f7b2 -> Website used for advice
@@ -30,6 +31,7 @@ starting_node = {
     'total_cost': abs(0-14) + abs(0-24), # How much distance still needed
     'parent': None # Which node told me to 'get to' this??
 }
+
 open_list.append(starting_node) # Did not know you could append a dictionary to a list.
 
 found_path = None  # Store the final path once found
@@ -110,8 +112,3 @@ while open_list != []:# While there are still nodes to look at run steps below:
             'parent': current
         })
 
-if found_path is not None:
-    print(found_path)
-    print("Path length:", len(found_path))
-else:
-    print("No path found.")
