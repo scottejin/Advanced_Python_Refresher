@@ -125,12 +125,6 @@ while obstacles < 175:
     grid[r][c] = "#"
     obstacles += 1
 
-
-
-
-
-
-
 for row in grid:
     print(row)
 
